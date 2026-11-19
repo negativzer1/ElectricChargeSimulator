@@ -1,0 +1,32 @@
+{
+  "name": "ElectricChargeSimulator",
+  "version": "1.0.0",
+  "description": "electric-charges-field",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "biome lint",
+    "format": "biome format --write",
+    "check": "biome check",
+    "fix": "biome check --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.21.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.21.0",
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

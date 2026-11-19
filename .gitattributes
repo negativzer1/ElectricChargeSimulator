@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.sh text eol=lf
+#safe deploy
+
+pnpm-lock.yaml merge=binary linguist-generated=true
+package-lock.json merge=binary linguist-generated=true
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
