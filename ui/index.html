@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Моделирование движения заряда</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Моделирование движения электрического заряда</h1>
+    </header>
+
+    <main class="layout">
+        <!-- ЛЕВАЯ КОЛОНКА: форма -->
+        <section class="panel" id="form-panel">
+            <h2>Параметры системы</h2>
+            <form id="simulation-form" novalidate>
+                <label>Масса, кг
+                    <input type="number" name="mass" step="any" required value="0.001" />
+                </label>
+                <label>Заряд 1 (неподвижный), Кл
+                    <input type="number" name="q1" step="any" required value="0.05" />
+                </label>
+                <label>Заряд 2 (движущийся), Кл
+                    <input type="number" name="q2" step="any" required value="0.01" />
+                </label>
+                <label>Начальная координата X, м
+                    <input type="number" name="initialX" step="any" required value="1.0" />
+                </label>
+                <label>Начальная координата Y, м
+                    <input type="number" name="initialY" step="any" required value="0.0" />
+                </label>
+                <label>Начальная скорость X, м/с
+                    <input type="number" name="initialVx" step="any" required value="0.05" />
+                </label>
+                <label>Начальная скорость Y, м/с
+                    <input type="number" name="initialVy" step="any" required value="0.0866" />
+                </label>
+                <label>Время моделирования, с
+                    <input type="number" name="duration" step="any" required value="10.0" />
+                </label>
+                <label>Шагов на характерное время
+                    <input type="number" name="stepsPerCharacteristicTime" step="1" min="1" required value="1000" />
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="use-test-data" />
+                    Использовать тестовый JSON
+                </label>
+
+                <div class="buttons">
+                    <button type="submit" id="btn-calculate">Рассчитать</button>
+                    <button type="button" id="btn-reset">Сбросить</button>
+                    <button type="button" id="btn-repeat">Повторить расчёт</button>
+                </div>
+            </form>
+
+            <div id="error-message" role="alert" hidden></div>
+        </section>
+
+        <!-- ЦЕНТР: визуализация -->
+        <section class="panel" id="viz-panel">
+            <h2>Траектория</h2>
+            <canvas id="trajectory-canvas" width="800" height="600"></canvas>
+        </section>
+
+        <!-- ПРАВАЯ КОЛОНКА: результаты и график -->
+        <section class="panel" id="results-panel">
+            <h2>Результаты</h2>
+            <dl id="results-list">
+                <dt>Количество точек</dt>
+                <dd id="res-points">—</dd>
+                <dt>Длительность моделирования, с</dt>
+                <dd id="res-duration">—</dd>
+                <dt>Шаг интегрирования, с</dt>
+                <dd id="res-timestep">—</dd>
+                <dt>Начальная энергия, Дж</dt>
+                <dd id="res-initenergy">—</dd>
+                <dt>Макс. отн. отклонение энергии</dt>
+                <dd id="res-maxerror">—</dd>
+            </dl>
+            <h2>Энергия от времени</h2>
+            <div id="energy-chart" style="width:100%; min-height:300px;"></div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
